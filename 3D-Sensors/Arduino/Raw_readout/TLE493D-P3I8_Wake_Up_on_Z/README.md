@@ -1,1 +1,1 @@
-Reading a TLE493D-P3I8 on a Shield2Go or 2goKit with plain SPI commands (using the Arduino SPI library) with the Wake Up / Interrupt functionality on Z only if Z >= 63 LSB14 at the update frequency of 16 Hz.
+Reading a TLE493D-P3I8 on a Shield2Go or 2goKit with plain SPI commands (using the Arduino SPI library) with the Wake Up / Interrupt functionality on Z only if Z >= 63 LSB14 or Z <= -129 LSB14 at the update frequency of 16 Hz.

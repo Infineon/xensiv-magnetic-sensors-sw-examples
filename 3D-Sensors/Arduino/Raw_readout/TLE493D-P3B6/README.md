@@ -1,0 +1,1 @@
+Reading a TLE493D-P3B6 on a Shield2Go or 2goKit with plain I2C commands (using the Arduino wire library). The sensor is opperated in the master controlled mode.
