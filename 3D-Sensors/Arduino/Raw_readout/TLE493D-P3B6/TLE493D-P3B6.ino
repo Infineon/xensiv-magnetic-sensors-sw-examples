@@ -20,16 +20,16 @@
 #define ADDRESS 0x5D    // for the P3B6
 #define LSB2mT 118.0    // Sensitivity for extra short range
 #define DELAY 50        // value in ms, change to modify update rate
-#define VDD_pin 15      // pin on which VDD of sensor is connected
+#define VDD_pin 8       // pin to enable low for VDD_I2C
 uint8_t buf[10];        // buffer to store received values
 
 
 void setup() {
   pinMode(VDD_pin, OUTPUT);         // switch on VDD for sensor
-  digitalWrite(VDD_pin, LOW);  delay(100);
-  digitalWrite(VDD_pin, HIGH);
+  digitalWrite(VDD_pin, HIGH);  delay(100);
+  digitalWrite(VDD_pin, LOW);
 
-  Serial.begin(115200);             // initializing the serial port
+  Serial.begin(1000000);             // initializing the serial port
   while (!Serial);
 
   Wire.begin();                     // init I2C peripheral

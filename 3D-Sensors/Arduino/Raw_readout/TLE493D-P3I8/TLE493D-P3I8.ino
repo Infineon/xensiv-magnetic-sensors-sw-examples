@@ -17,6 +17,7 @@
 /* ---------------------------------------------------------------- */
 
 #include "SPI.h"
+int VDD_EN_LOW = 4;
 int CSN = 3;                      // CSN pin
 uint8_t buf[10];                  // buffer to store received values
 
@@ -24,8 +25,10 @@ uint8_t buf[10];                  // buffer to store received values
 void setup() {
   pinMode(CSN, OUTPUT);           // configure CSN
   digitalWrite(CSN, HIGH);
+  pinMode(VDD_EN_LOW, OUTPUT);          
+  digitalWrite(VDD_EN_LOW, LOW);
 
-  Serial.begin(115200);           // initializing the serial port
+  Serial.begin(1000000);           // initializing the serial port
   while (!Serial);
 
   SPI.begin();                    // initialize the SPI port as master
