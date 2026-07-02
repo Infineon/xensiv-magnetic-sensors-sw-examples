@@ -1,0 +1,77 @@
+<root version="2.66.0">
+    <signals>
+        <var name="elf" type="group" offset="0" access="read-write" model-update-value-enabled="true">
+            <var name="g_angle" type="float" offset="0" access="read-write" default="0" model-update-value-enabled="true"/>
+            <var name="g_CRC_raw" type="uint16" offset="0" access="read-write" default="0" model-update-value-enabled="true">
+                <item-configuration>
+                    <title><![CDATA[g_CRC_raw]]></title>
+                </item-configuration>
+            </var>
+            <var name="g_angle_raw" type="uint16" offset="0" access="read-write" default="0" model-update-value-enabled="true">
+                <item-configuration>
+                    <title><![CDATA[g_angle_raw]]></title>
+                </item-configuration>
+            </var>
+            <var name="g_status_raw" type="uint16" offset="0" access="read-write" default="0" model-update-value-enabled="true">
+                <item-configuration>
+                    <title><![CDATA[g_status_raw]]></title>
+                </item-configuration>
+            </var>
+        </var>
+        <var name="angle_int" type="uint32" unit="degrees" offset="0" access="read-write" default="0" model-update-value-enabled="true"/>
+    </signals>
+    <layout>
+        <lineEdit auto-connect="elf.g_status_raw" format="custom">
+            <item-configuration>
+                <title><![CDATA[Device Status Code    ]]></title>
+            </item-configuration>
+        </lineEdit>
+        <lineEdit auto-connect="elf.g_angle_raw">
+            <item-configuration>
+                <title><![CDATA[Angle Raw [LSB16]     ]]></title>
+            </item-configuration>
+        </lineEdit>
+        <lineEdit auto-connect="elf.g_CRC_raw">
+            <item-configuration>
+                <title><![CDATA[CRC                                          ]]></title>
+            </item-configuration>
+        </lineEdit>
+        <lineEdit auto-connect="elf.g_angle" format="custom">
+            <item-configuration>
+                <title><![CDATA[Angle [degrees]             ]]></title>
+            </item-configuration>
+        </lineEdit>
+        <tab>
+            <tabPage layout="horizontal">
+                <item-configuration>
+                    <title><![CDATA[Gauge View]]></title>
+                </item-configuration>
+                <clockGauge auto-connect="elf.g_angle" format="custom" min="0" max="360" angle-start="360" angle-end="0" tick-inc-major="60" tick-inc-minor="30" tick-inc-label="60">
+                    <item-configuration>
+                        <id><![CDATA[Angle_Gauge]]></id>
+                    </item-configuration>
+                </clockGauge>
+            </tabPage>
+            <tabPage layout="horizontal">
+                <item-configuration>
+                    <title><![CDATA[Graph View]]></title>
+                </item-configuration>
+                <graph buffer-depth="6000" multi-channel="false" legend-pos="top" division-x="10" division-y="10" offset-y="1" time-per-division-x="1" unit-x="s" x-axis-visible="true" mode="rolling-time" histogram-x-min="0" histogram-x-max="1" histogram-bin-count="10" y-autoscale="false" control-visible="true">
+                    <channel auto-connect="elf.g_angle" enabled="defined-by-connection" offset-x="0" offset-y="0" unit-per-division-y="45" pen-width="5" color="darkmagenta" y-axis-visible="false">
+                        <item-configuration>
+                            <title><![CDATA[Angle]]></title>
+                        </item-configuration>
+                    </channel>
+                </graph>
+            </tabPage>
+        </tab>
+    </layout>
+    <interface>
+        <item-configuration>
+            <id><![CDATA[das-itf]]></id>
+        </item-configuration>
+        <port plugin="PCom_DAS::DAS" connect="true" system-key="{ADS}"/>
+    </interface>
+    <config/>
+    <debugBox elf-path="..\TriCore Debug (TASKING)\TLx49012_TC375_SPI_Integration_Example.elf" watches="g_angle;g_CRC_raw;g_angle_raw;g_status_raw" com-interface-id="das-itf" title="debugBox" id="elf"/>
+</root>

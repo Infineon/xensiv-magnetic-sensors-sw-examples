@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+indexer/indexAllFiles=false
+indexer/indexAllHeaderVersions=false
+indexer/indexUnusedHeadersWithAlternateLang=false
+indexer/indexUnusedHeadersWithDefaultLang=false
+indexer/indexerId=org.eclipse.cdt.core.nullindexer
+indexer/updatePolicy=2
+org.eclipse.cdt.core=
