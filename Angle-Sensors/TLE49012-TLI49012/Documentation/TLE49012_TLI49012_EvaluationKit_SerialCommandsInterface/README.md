@@ -8,8 +8,8 @@
 |------|---------|
 | **Document Title** | Serial Commands Interface |
 | **Product** | XENSIV™ TLx49012 Magnetic Position Sensor Evaluation Kit |
-| **Revision** | 1.0 |
-| **Date** | May 7, 2026 |
+| **Revision** | 1.1 |
+| **Date** | September 2, 2026 |
 | **Status** | Released |
 
 ### Revision History
@@ -17,6 +17,7 @@
 | Revision | Date | Author | Description |
 |----------|------|--------|-------------|
 | 1.0 | May 7, 2026 | - | Initial release |
+| 1.1 | September 2, 2026 | - | Added design step B13, treated the same as B12 (`CMD_SET_DESIGN_STEP` value 2) |
 
 ### Related Documents
 
@@ -1048,7 +1049,7 @@ cycles = (word >> 8) & 0x1F;
 - **Header**: `0x2B`
 - **Payload Size**: `0x0001`
 - **Payload**:
-  - Byte 0: Design step (0=A11, 1=B11, 2=B12)
+  - Byte 0: Design step (0=A11, 1=B11, 2=B12/B13)
 
 **Example**: `2B 01 00 01 D2` (Design step B11)
 
@@ -1065,9 +1066,11 @@ cycles = (word >> 8) & 0x1F;
 |-------|-------------|-------------------------|
 | 0     | A11         | Initial design step     |
 | 1     | B11         | Second design iteration |
-| 2 (default)    | B12         | Third design iteration  |
+| 2 (default)    | B12, B13    | Third design iteration. B13 is treated the same as B12 and uses this same value |
 
 **Note**: This command configures the MCU's internal design step setting, which determines memory map layouts and register definitions. This command should be executed early in the initialization sequence. Does not require sensor to be in test mode.
+
+**Note**: There is no separate value for B13. Sensors of design step B13 share the memory map and register definitions of B12, so value 2 must be used for both.
 
 ---
 
@@ -1402,7 +1405,7 @@ Enter test mode to access sensor registers. Send `14 01 00 01 E9` (CMD_SPI_ENTER
 
 ##### Step 6: Set Design Step
 
-**⚠️ MANDATORY**: Configure the MCU for the correct design step. Send `2B 01 00 02 D1` (CMD_SET_DESIGN_STEP - Design step B12, value 2) and wait for response `2B 00 00 D4`. This configures the MCU's register map and memory layout for the sensor variant.
+**⚠️ MANDATORY**: Configure the MCU for the correct design step. Send `2B 01 00 02 D1` (CMD_SET_DESIGN_STEP - Design step B12/B13, value 2) and wait for response `2B 00 00 D4`. This configures the MCU's register map and memory layout for the sensor variant.
 
 **Note**: This step is required before any register read/write operations.
 
@@ -1978,7 +1981,7 @@ Enable the SPI interface. Send `0D 00 00 F2` (CMD_SPI_ENABLE) and wait for respo
 
 #### Step 6: Set Design Step
 
-**⚠️ MANDATORY**: Configure the MCU for the correct design step. Send `2B 01 00 02 D1` (CMD_SET_DESIGN_STEP - Design step B12, value 2) and wait for response `2B 00 00 D4`. This configures the MCU's register map and memory layout for the sensor variant.
+**⚠️ MANDATORY**: Configure the MCU for the correct design step. Send `2B 01 00 02 D1` (CMD_SET_DESIGN_STEP - Design step B12/B13, value 2) and wait for response `2B 00 00 D4`. This configures the MCU's register map and memory layout for the sensor variant.
 
 **Note**: This step is required before any register read/write operations.
 
