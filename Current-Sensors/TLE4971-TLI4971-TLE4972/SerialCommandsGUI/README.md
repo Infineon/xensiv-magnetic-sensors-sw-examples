@@ -1755,3 +1755,35 @@ Then restart the procedure from Phase 1. The backup image already carries a vali
 | OCD outputs pulled to GND after the calibration | The CRC was not recalculated after modifying the coefficient words |
 | Sensitivity matches but drifts over temperature | Only the room-temperature point was fitted; verify that all four support points entered the cubic fit |
 
+---
+
+## Python Example Applications
+
+The procedures described above are implemented as ready-to-run Python applications in this folder. Both provide a Tkinter user interface and drive the programmer board over the serial commands documented in this file.
+
+| Application | Implements | Description |
+|-------------|------------|-------------|
+| [TLE4972_OCD_THR_PROGRAM_EXAMPLE.py](TLE4972_OCD_THR_PROGRAM_EXAMPLE.py) | [Complete Programming Example](#complete-programming-example) | Port scan → connect → firmware mode → init MCU → test mode → read EEPROM → modify the OCD1/OCD2 thresholds → recalculate the CRC → program → power cycle → read back and verify |
+| [TLE4972_DCW_CALIBRATION_EXAMPLE.py](TLE4972_DCW_CALIBRATION_EXAMPLE.py) | [Double Code Word Calibration Flow](#double-code-word-calibration-flow) | Runs the five DCW phases, interpolates `Gain_CW` and `Offset_CW`, recalculates the sensitivity and offset coefficients plus the CRC, programs the EEPROM and verifies the result. Archives the original EEPROM image and can restore it |
+
+### Running the examples
+
+Prebuilt Windows executables are available in [dist](dist), so no Python installation is required:
+
+- [dist/TLE4972_OCD_THR_PROGRAM_EXAMPLE.exe](dist/TLE4972_OCD_THR_PROGRAM_EXAMPLE.exe)
+- [dist/TLE4972_DCW_CALIBRATION_EXAMPLE.exe](dist/TLE4972_DCW_CALIBRATION_EXAMPLE.exe)
+
+To run the scripts from source instead:
+
+```
+pip install -r Py_TLE4972_requirements.txt
+python TLE4972_OCD_THR_PROGRAM_EXAMPLE.py
+python TLE4972_DCW_CALIBRATION_EXAMPLE.py
+```
+
+Requirements: Python 3.10 or newer, `pyserial` and Tkinter. The full pinned dependency list is in [Py_TLE4972_requirements.txt](Py_TLE4972_requirements.txt).
+
+> **⚠️ Warning:** both applications write to the sensor EEPROM. The CRC is never recalculated by the firmware or the sensor, so programming an image with a wrong CRC leaves the part in a permanent fault state with the OCD outputs driven to GND after the next start-up. The DCW calibration additionally **overwrites factory calibration data** — see [Important: EEPROM CRC Handling](#important-eeprom-crc-handling).
+
+> **Note:** the programmer board must already be running the *firmware* image, not just the bootloader. The scripts only switch an already-flashed board from bootloader to firmware; flashing the firmware itself is done with the Infineon evaluation kit.
+

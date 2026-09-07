@@ -12,7 +12,7 @@ For this example we are using Raspberry Pi.
 
 - Connect the VDD, GND, SCL and SDA of the TLE493D-P2B6-A0 sensor and Raspberry Pi(or any Linux based microcontroller).
 - Clone this repository or download the .zip file of this repository. 
-- Change directory to *...\xensiv-magnetic-sensors-sw-examples\3D-Sensors\TLE493D-P2B6\Linux* folder in terminal.
+- Change directory to *...\xensiv-magnetic-sensors-sw-examples\3D-Sensors\TLE493D-P2B6\RaspberryPi\TLE493D-P2B6_RaspberryPi_IntegrationExample_Readout* folder in terminal.
 - In terminal we have to create the executable for which you can enter the following command: **gcc -o executable_name tle493d-p2b6.c**
 - Once the execuable is generated, you can run the code in terminal: **./executable_name**
 

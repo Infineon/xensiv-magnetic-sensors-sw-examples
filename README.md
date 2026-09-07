@@ -11,9 +11,9 @@ Examples are organized as **`<Sensor-Family>/<Sensor>/<Platform>/<Example>`**.
 
 | Family | Sensors |
 |---|---|
-| [3D Magnetic Sensors](#3d-magnetic-sensors) | TLE493D-A2B6, TLE493D-P2B6, TLE493D-P3B6, TLE493D-P3I8, TLE493D-W2B6, TLI493D-W2B6, TLI493D-W2BW |
+| [3D Magnetic Sensors](#3d-magnetic-sensors) | TLE493D-A2B6, TLE493D-P2B6, TLE493D-P3B6 / TLE493D-W3B6, TLE493D-P3I8, TLE493D-W2B6 / TLI493D-W2B6, TLI493D-W2BW |
 | [Angle Sensors](#angle-sensors) | TLE49012 / TLI49012, TLE5012, TLE5501, TLE5502 |
-| [Current Sensors](#current-sensors) | TLE4972 |
+| [Current Sensors](#current-sensors) | TLE4971 / TLI4971 / TLE4972 |
 | [Linear Sensors](#linear-sensors) | TLE4998S4 |
 | [Pressure Sensors](#pressure-sensors) | KP215F1701, KP467 |
 | [Speed Sensors](#speed-sensors) | TLE4922 |
@@ -29,19 +29,19 @@ Examples are organized as **`<Sensor-Family>/<Sensor>/<Platform>/<Example>`**.
 
 | Sensor | Platform | Example | Description |
 |---|---|---|---|
-| [TLE493D-A2B6](3D-Sensors/TLE493D-A2B6) | Arduino | [Raw readout](3D-Sensors/TLE493D-A2B6/Arduino/Raw_readout/TLE493D-A2B6) | I²C readout on Shield2Go using the Wire library, master-controlled 1-byte-read mode |
-| [TLE493D-P2B6](3D-Sensors/TLE493D-P2B6) | Linux | [Raw readout](3D-Sensors/TLE493D-P2B6/Linux) | Bx/By/Bz and temperature over I²C from Linux user space (Raspberry Pi) |
-| [TLE493D-P3B6](3D-Sensors/TLE493D-P3B6) | Arduino | [Raw readout](3D-Sensors/TLE493D-P3B6/Arduino/Raw_readout/TLE493D-P3B6) | I²C readout on Shield2Go / 2Go Kit in master-controlled mode |
-| [TLE493D-P3B6](3D-Sensors/TLE493D-P3B6) | Arduino | [Bx, Z and T only](3D-Sensors/TLE493D-P3B6/Arduino/Raw_readout/TLE493D-P3B6-W3B6-Bx_Z_and_T_only) | Reduced readout of Bx, Bz and temperature — also applicable to the W3B6 variant |
-| [TLE493D-P3I8](3D-Sensors/TLE493D-P3I8) | Arduino | [Raw readout](3D-Sensors/TLE493D-P3I8/Arduino/Raw_readout/TLE493D-P3I8) | SPI readout in the full range setting (±160 mT) |
-| [TLE493D-P3I8](3D-Sensors/TLE493D-P3I8) | Arduino | [Wake-up on Z](3D-Sensors/TLE493D-P3I8/Arduino/Raw_readout/TLE493D-P3I8_Wake_Up_on_Z) | Interrupt / wake-up on Z-axis thresholds at 16 Hz update rate |
-| [TLE493D-P3I8](3D-Sensors/TLE493D-P3I8) | Arduino | [CRC at read](3D-Sensors/TLE493D-P3I8/Arduino/Raw_readout/TLE493D_P3I8_CRC_at_read) | SPI readout with CRC verification of the received frame |
-| [TLE493D-W2B6](3D-Sensors/TLE493D-W2B6) | Arduino | [DrillTriggerV2 add-on](3D-Sensors/TLE493D-W2B6/Arduino/AddOns/DrillTriggerV2) | Drill trigger add-on mounted on the 2Go Kit |
-| [TLI493D-W2B6](3D-Sensors/TLI493D-W2B6) | Arduino | [Raw readout](3D-Sensors/TLI493D-W2B6/Arduino/Raw_readout/TLI493D-W2B6) | I²C readout on Shield2Go, master-controlled 1-byte-read mode |
-| [TLI493D-W2B6](3D-Sensors/TLI493D-W2B6) | Arduino | [Training template](3D-Sensors/TLI493D-W2B6/Arduino/Training/Template) | Skeleton sketch based on the TLx493D library, used as a training starting point |
-| [TLI493D-W2BW](3D-Sensors/TLI493D-W2BW) | Arduino | [Raw readout](3D-Sensors/TLI493D-W2BW/Arduino/Raw_readout/TLI493D-W2BW) | I²C readout on Shield2Go using the Wire library |
-| [TLI493D-W2BW](3D-Sensors/TLI493D-W2BW) | Arduino | [JoystickBasic add-on](3D-Sensors/TLI493D-W2BW/Arduino/AddOns/JoystickBasic) | Bx/By/Bz interpreted as joystick input with the Play2Go add-on on XMC 2Go |
-| [TLI493D-W2BW](3D-Sensors/TLI493D-W2BW) | Python | [Spindle movement](3D-Sensors/TLI493D-W2BW/Python/Spindle%20Movement) | Spindle position measurement — Arduino firmware plus Python host script |
+| [TLE493D-A2B6](3D-Sensors/TLE493D-A2B6) | Arduino | [Readout](3D-Sensors/TLE493D-A2B6/Arduino/TLE493D-A2B6_Arduino_IntegrationExample_Readout) | I²C readout on Shield2Go using the Wire library, master-controlled 1-byte-read mode |
+| [TLE493D-P2B6](3D-Sensors/TLE493D-P2B6) | RaspberryPi | [Readout](3D-Sensors/TLE493D-P2B6/RaspberryPi/TLE493D-P2B6_RaspberryPi_IntegrationExample_Readout) | Bx/By/Bz and temperature over I²C from Linux user space on a Raspberry Pi |
+| [TLE493D-P3B6 / TLE493D-W3B6](3D-Sensors/TLE493D-P3B6_TLE493D-W3B6) | Arduino | [Readout](3D-Sensors/TLE493D-P3B6_TLE493D-W3B6/Arduino/TLE493D-P3B6_TLE493D-W3B6_Arduino_IntegrationExample_Readout) | I²C readout on Shield2Go / 2Go Kit in master-controlled mode |
+| [TLE493D-P3B6 / TLE493D-W3B6](3D-Sensors/TLE493D-P3B6_TLE493D-W3B6) | Arduino | [Bx, Z and T only](3D-Sensors/TLE493D-P3B6_TLE493D-W3B6/Arduino/TLE493D-P3B6_TLE493D-W3B6-Bx_Arduino_IntegrationExample_ZandTonly) | Reduced readout of Bx, Bz and temperature |
+| [TLE493D-P3I8](3D-Sensors/TLE493D-P3I8) | Arduino | [Readout](3D-Sensors/TLE493D-P3I8/Arduino/TLE493D-P3I8_Arduino_IntegrationExample_Readout) | SPI readout in the full range setting (±160 mT) |
+| [TLE493D-P3I8](3D-Sensors/TLE493D-P3I8) | Arduino | [Wake-up on Z](3D-Sensors/TLE493D-P3I8/Arduino/TLE493D-P3I8_Arduino_IntegrationExample_WakeUpOnZ) | Interrupt / wake-up on Z-axis thresholds at 16 Hz update rate |
+| [TLE493D-P3I8](3D-Sensors/TLE493D-P3I8) | Arduino | [CRC at read](3D-Sensors/TLE493D-P3I8/Arduino/TLE493D-P3I8_Arduino_IntegrationExample_CRCatRead) | SPI readout with CRC verification of the received frame |
+| [TLE493D-W2B6 / TLI493D-W2B6](3D-Sensors/TLE493D-W2B6_TLI493D-W2B6) | Arduino | [DrillTriggerV2 add-on](3D-Sensors/TLE493D-W2B6_TLI493D-W2B6/Arduino/TLE493D-W2B6_Arduino_IntegrationExample_DrillTriggerV2) | Drill trigger add-on mounted on the 2Go Kit |
+| [TLE493D-W2B6 / TLI493D-W2B6](3D-Sensors/TLE493D-W2B6_TLI493D-W2B6) | Arduino | [Readout](3D-Sensors/TLE493D-W2B6_TLI493D-W2B6/Arduino/TLI493D-W2B6_Arduino_IntegrationExample_Readout) | I²C readout on Shield2Go, master-controlled 1-byte-read mode |
+| [TLE493D-W2B6 / TLI493D-W2B6](3D-Sensors/TLE493D-W2B6_TLI493D-W2B6) | Arduino | [Training template](3D-Sensors/TLE493D-W2B6_TLI493D-W2B6/Arduino/TLI493D-W2B6_Arduino_Template) | Skeleton sketch based on the TLx493D library, used as a training starting point |
+| [TLI493D-W2BW](3D-Sensors/TLI493D-W2BW) | Arduino | [Readout](3D-Sensors/TLI493D-W2BW/Arduino/TLI493D-W2BW_Arduino_IntegrationExample_Readout) | I²C readout on Shield2Go using the Wire library |
+| [TLI493D-W2BW](3D-Sensors/TLI493D-W2BW) | Arduino | [JoystickBasic add-on](3D-Sensors/TLI493D-W2BW/Arduino/TLI493D-W2BW_Arduino_IntegrationExample_JoystickBasic) | Bx/By/Bz interpreted as joystick input with the Play2Go add-on on XMC 2Go |
+| [TLI493D-W2BW](3D-Sensors/TLI493D-W2BW) | Arduino | [Spindle movement](3D-Sensors/TLI493D-W2BW/Arduino/TLI493D-W2BW_Arduino_IntegrationExample_SpindleMovement) | Spindle position measurement — Arduino sketch plus Python host script |
 
 </details>
 
@@ -82,8 +82,8 @@ Examples are organized as **`<Sensor-Family>/<Sensor>/<Platform>/<Example>`**.
 
 | Sensor | Platform | Example | Description |
 |---|---|---|---|
-| [TLE4972](Current-Sensors/TLE4972) | Arduino | [SICI interface example](Current-Sensors/TLE4972/Arduino) | Register and EEPROM access over the single-wire SICI interface on the AOUT pin |
-| [TLE4972](Current-Sensors/TLE4972) | Python | [Serial commands examples](Current-Sensors/TLE4972/Python/TLE4972_Serial_Commands_Examples) | Programmer serial command interface — DCW calibration and OCD threshold programming |
+| [TLE4972](Current-Sensors/TLE4972) | Arduino | [SICI interface example](Current-Sensors/TLE4972/Arduino/TLE4972_Arduino_IntegrationExample_SICI) | Register and EEPROM access over the single-wire SICI interface on the AOUT pin |
+| [TLE4971 / TLI4971 / TLE4972](Current-Sensors/TLE4971-TLI4971-TLE4972) | SerialCommandsGUI | [Serial commands examples](Current-Sensors/TLE4971-TLI4971-TLE4972/SerialCommandsGUI) | Programmer serial command interface — DCW calibration and OCD threshold programming |
 
 </details>
 
@@ -96,7 +96,7 @@ Examples are organized as **`<Sensor-Family>/<Sensor>/<Platform>/<Example>`**.
 
 | Sensor | Platform | Example | Description |
 |---|---|---|---|
-| [TLE4998S4](Linear-Sensors/TLE4998S4) | AURIX™ | [TC277 SENT readout](Linear-Sensors/TLE4998S4/Aurix) | Decoding SENT frames from the sensor on KIT_AURIX_TC277_TRB |
+| [TLE4998S4](Linear-Sensors/TLE4998S4) | AURIX™ | [TC277 SENT readout](Linear-Sensors/TLE4998S4/Aurix/TLE4998S4_TC277_IntegrationExample) | Decoding SENT frames from the sensor on KIT_AURIX_TC277_TRB |
 
 </details>
 
@@ -109,8 +109,8 @@ Examples are organized as **`<Sensor-Family>/<Sensor>/<Platform>/<Example>`**.
 
 | Sensor | Platform | Example | Description |
 |---|---|---|---|
-| [KP215F1701](Pressure-Sensors/KP2151701) | PSOC™ | [PSOC™ 4 analog readout](Pressure-Sensors/KP2151701/PSOC) | MAP sensor sampled with the SAR ADC on CY8CKIT-149, streamed over UART |
-| [KP467](Pressure-Sensors/KP467) | PSOC™ | [PSoC™ 6 SPI readout and LPM demo](Pressure-Sensors/KP467/PSOC) | 10/12/14-bit readout plus a low-power monitoring wake-up demonstration |
+| [KP215F1701](Pressure-Sensors/KP2151701) | PSOC™ | [PSOC™ 4 analog readout](Pressure-Sensors/KP2151701/PSOC/KP215F1701_PSoC4_IntegrationExample) | MAP sensor sampled with the SAR ADC on CY8CKIT-149, streamed over UART |
+| [KP467](Pressure-Sensors/KP467) | PSOC™ | [PSoC™ 6 SPI readout and LPM demo](Pressure-Sensors/KP467/PSOC/KP467_PSoC6_IntegrationExample) | 10/12/14-bit readout plus a low-power monitoring wake-up demonstration |
 
 </details>
 
@@ -123,8 +123,8 @@ Examples are organized as **`<Sensor-Family>/<Sensor>/<Platform>/<Example>`**.
 
 | Sensor | Platform | Example | Description |
 |---|---|---|---|
-| [TLE4922](Speed-Sensors/TLE4922) | Arduino | [Tooth wheel speed measurement](Speed-Sensors/TLE4922/Arduino) | Instantaneous speed, average speed and RPM of a rotating wheel |
-| [TLE4922](Speed-Sensors/TLE4922) | PSOC™ | [Tooth wheel speed measurement](Speed-Sensors/TLE4922/PSOC) | PWM edge interrupts on PSoC™ 6, with average speed computed when the wheel stops |
+| [TLE4922](Speed-Sensors/TLE4922) | Arduino | [Tooth wheel speed measurement](Speed-Sensors/TLE4922/Arduino/TLE4922_Arduino_IntegrationExample) | Instantaneous speed, average speed and RPM of a rotating wheel |
+| [TLE4922](Speed-Sensors/TLE4922) | PSOC™ | [Tooth wheel speed measurement](Speed-Sensors/TLE4922/PSOC/TLE4922_PSoC6_IntegrationExample) | PWM edge interrupts on PSoC™ 6, with average speed computed when the wheel stops |
 
 </details>
 
