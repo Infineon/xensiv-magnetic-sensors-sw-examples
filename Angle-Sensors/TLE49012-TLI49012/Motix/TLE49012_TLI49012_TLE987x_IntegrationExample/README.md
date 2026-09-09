@@ -1,3 +1,5 @@
+<img src="doc/IFX_LOGO_600.png" align="right" width="150" alt="Infineon" />
+
 # TLE49012 and TLI49012 TLE987x Integration Example
 
 <br>
@@ -8,6 +10,8 @@ This code example provides a starting point for interfacing the TLx49012 angle s
 The development boards used for this example code are:
 - **TLE49012 Satellite Board**;
     - [Sensor Infineon website](https://www.infineon.com/part/TLE49012-S0001)
+    - [TLE49012 Evaluation Kit Infineon website](https://www.infineon.com/evaluation-board/TLX49012-EVAL-KIT)
+    - [TLI49012 Evaluation Kit Infineon website](https://www.infineon.com/evaluation-board/TLI49012-EVAL-KIT)
 - **TLE987x EvalBoard**, VQFN socket:
     - TLE9871QXA20 microcontroller;
     - TLE9872QXA40 microcontroller;
@@ -15,6 +19,14 @@ The development boards used for this example code are:
 - **TLE9879 EvalKit V1.4**:
     - TLE9879QXA40 microcontroller;    
     - [Evaluation Board Infineon website](https://www.infineon.com/evaluation-board/TLE9879-EVALKIT)
+
+> **⚠️ Important — all example codes are made for the SPI interface**
+>
+> SPI is the main interface for sensor configuration such as LUT programming, interface settings or measurement settings. Depending on the sensor variant, different types of interfaces are available and specific interfaces are set by default. SPI is for every variant active right at start-up.
+>
+> If the sensor requires a non-default configuration setting, the SPI interface must be kept active by sending a SPI register unlock command after t<sub>SPI_active</sub> and before t<sub>start-up</sub>. Once t<sub>start-up</sub> has elapsed the pre-configured interface is active.
+>
+> The interface type can be selected by programming `if_mode` in the `<usr_config_1_reg>` register. Please follow the sensor configuration flow as depicted in the [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf).
 
 ### 1.1. Short description
 
@@ -332,3 +344,9 @@ ANGLE [LSB]: 0x2593 | ANGLE [deg]: 52.840
 ANGLE [LSB]: 0x2593 | ANGLE [deg]: 52.840
 ANGLE [LSB]: 0x2593 | ANGLE [deg]: 52.840
 ```
+
+## 6. Related Documents
+
+- [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf) - Sensor user manual
+- [XENSIV™ angle sensors](https://www.infineon.com/products/sensor/magnetic-position-sensors/angle-sensors) - Infineon angle sensors product page
+- [Additional TLE49012 / TLI49012 example codes](https://github.com/Infineon/xensiv-magnetic-sensors-sw-examples/tree/main/Angle-Sensors/TLE49012-TLI49012) - More code examples for these sensors
