@@ -1,9 +1,19 @@
+<img src="doc/IFX_LOGO_600.png" align="right" width="150" alt="Infineon" />
+
 # SPI Next-Frame Read and Write Example Code for TLE49012 and TLI49012 Angle Sensors
 
 ## 1. Introduction
 This code example provides a starting point for interfacing the TLx49012 angle sensor with an Arduino&trade; development board using the **SPI** interface. 
 Although the example code targets Arduino, the majority of functions are MCU agnostic and can be adapted to fit any target.
 >Note: The provided example code is not a qualified solution and is provided "as-is".
+
+> **⚠️ Important — all example codes are made for the SPI interface**
+>
+> SPI is the main interface for sensor configuration such as LUT programming, interface settings or measurement settings. Depending on the sensor variant, different types of interfaces are available and specific interfaces are set by default. SPI is for every variant active right at start-up.
+>
+> If the sensor requires a non-default configuration setting, the SPI interface must be kept active by sending a SPI register unlock command after t<sub>SPI_active</sub> and before t<sub>start-up</sub>. Once t<sub>start-up</sub> has elapsed the pre-configured interface is active.
+>
+> The interface type can be selected by programming `if_mode` in the `<usr_config_1_reg>` register. Please follow the sensor configuration flow as depicted in the [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf).
 
 ### 1.1 Short Description
 This example code covers:
@@ -256,3 +266,8 @@ MOSI Frame: 0xFF000A2D
 MOSI Frame: 0xFD8E81E1
 ```
 
+## 3. Related Documents
+
+- [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf) - Sensor user manual
+- [XENSIV™ angle sensors](https://www.infineon.com/products/sensor/magnetic-position-sensors/angle-sensors) - Infineon angle sensors product page
+- [Additional TLE49012 / TLI49012 example codes](https://github.com/Infineon/xensiv-magnetic-sensors-sw-examples/tree/main/Angle-Sensors/TLE49012-TLI49012) - More code examples for these sensors

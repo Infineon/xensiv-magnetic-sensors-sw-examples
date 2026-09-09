@@ -1,12 +1,16 @@
-<center>
-
-![Logo](doc/markdown/IFX_LOGO_600.gif){width=150}
-
-</center>
+<img src="doc/markdown/IFX_LOGO_600.gif" align="right" width="150" alt="Infineon" />
 
 # TLE49012 and TLI49012_TC375_LK_SPI_Integration_Example
 
 This example code aims to provide a starting point for integrating the TLx49012 magnetic angle sensor with the TC375 AURIX&trade; MCU using SPI communication.
+
+> **⚠️ Important — all example codes are made for the SPI interface**
+>
+> SPI is the main interface for sensor configuration such as LUT programming, interface settings or measurement settings. Depending on the sensor variant, different types of interfaces are available and specific interfaces are set by default. SPI is for every variant active right at start-up.
+>
+> If the sensor requires a non-default configuration setting, the SPI interface must be kept active by sending a SPI register unlock command after t<sub>SPI_active</sub> and before t<sub>start-up</sub>. Once t<sub>start-up</sub> has elapsed the pre-configured interface is active.
+>
+> The interface type can be selected by programming `if_mode` in the `<usr_config_1_reg>` register. Please follow the sensor configuration flow as depicted in the [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf).
 
 ## Device
 
@@ -40,11 +44,9 @@ This code example has been developed for the board KIT_A2G_TC375_LITE.
 Vcc supply, which is the I/O reference, is set to 3V3.
 Ensure the SPI lines are compatible with the configured external voltage to avoid incorrect communication or risk of damaging the MCU port or the TLx49012 sensor.**
 
-<center>
-
-![Schematic](doc/markdown/SCH.png){width=1000}
-
-</center>
+<p align="center">
+<img src="doc/markdown/SCH.png" width="1000" alt="Schematic" />
+</p>
 
 ## Implementation
 
@@ -450,18 +452,13 @@ Click on the dedicated OneEye button <img src="./doc/markdown/one_eye_btn.png" w
 
 >**Note:** Requires OneEye to be installed on the computer.
 
-<center>
+<p align="center">
+<img src="doc/markdown/one_eye_ui.png" width="1000" alt="OneEye UI" />
+</p>
 
-![OneEye UI](doc/markdown/one_eye_ui.png){width=1000}
-
-</center>
-
-
-<center>
-
-![OneEye UI](doc/markdown/one_eye_ui_1.png){width=1000}
-
-</center>
+<p align="center">
+<img src="doc/markdown/one_eye_ui_1.png" width="1000" alt="OneEye UI" />
+</p>
 
 **Debugger Verification:**
 1. Set breakpoints in the data processing and decoding functions
@@ -516,6 +513,11 @@ If CRC validation is required in the application:
 - Confirm CRC is calculated over the correct bytes (Status + Angle Data)
 - Check for noise or interference on the SPI bus
 
+## Related Documents
+
+- [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf) - Sensor user manual
+- [XENSIV™ angle sensors](https://www.infineon.com/products/sensor/magnetic-position-sensors/angle-sensors) - Infineon angle sensors product page
+- [Additional TLE49012 / TLI49012 example codes](https://github.com/Infineon/xensiv-magnetic-sensors-sw-examples/tree/main/Angle-Sensors/TLE49012-TLI49012) - More code examples for these sensors
 ## References
 
 AURIX&trade; Development Studio is available online:

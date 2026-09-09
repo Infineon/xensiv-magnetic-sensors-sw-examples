@@ -1,4 +1,4 @@
-<img src="doc/markdown/IFX_LOGO_600.png" align="right" width="150" /> 
+<img src="doc/markdown/IFX_LOGO_600.png" align="right" width="150" alt="Infineon" />
 
 # XENSIV™ TLE49012 and TLI49012 Magnetic Position Sensor Evaluation Kit - Serial Commands Interface
 
@@ -21,6 +21,8 @@
 
 ### Related Documents
 
+- [XENSIV™ TLE49012 Evaluation Kit](https://www.infineon.com/evaluation-board/TLX49012-EVAL-KIT) - Evaluation kit product page
+- [XENSIV™ TLI49012 Evaluation Kit](https://www.infineon.com/evaluation-board/TLI49012-EVAL-KIT) - Evaluation kit product page
 - [XENSIV™ TLx49012 Evaluation Board User Guide]() - Hardware setup, connection diagrams, software installation and usage etc.
 - [XENSIV™ TLx49012 Magnetic Position Sensor Evaluation Software](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.xensivtlx49012anglesensorevaluationsoftware) - Evaluation Software
 - [FTDI Drivers](https://ftdichip.com/drivers/d2xx-drivers/) - D2XX drivers for USB serial communication (included with software)

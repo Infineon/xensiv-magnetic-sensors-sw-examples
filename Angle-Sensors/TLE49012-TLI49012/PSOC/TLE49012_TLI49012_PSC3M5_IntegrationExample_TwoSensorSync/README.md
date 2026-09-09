@@ -1,3 +1,5 @@
+<img src="doc/IFX_LOGO_600.png" align="right" width="150" alt="Infineon" />
+
 # TLE49012 and TLI49012 PSC3M5_CC2 SPI 2-Sensor Sync Integration Example
 
 <br>
@@ -7,10 +9,20 @@
 This code example provides a starting point for interfacing two TLx49012 angle sensors with a PSOC&trade; Control C3 microcontroller, using **SPI with interrupt-driven transfers**. <br>
 The development boards used for this example code are:
 - **TLE49012 Satellite Board** (x2);
+    - [TLE49012 Evaluation Kit Infineon website](https://www.infineon.com/evaluation-board/TLX49012-EVAL-KIT)
+    - [TLI49012 Evaluation Kit Infineon website](https://www.infineon.com/evaluation-board/TLI49012-EVAL-KIT)
 - **PSOC&trade; Control C3M5 Motor Drive Control Card** (KIT_PSC3M5_CC2), featuring the **PSC3M5FDS2AFQ1** MCU;
     - [Evaluation Board Infineon website](https://www.infineon.com/evaluation-board/KIT-PSC3M5-CC2)
 
 >Note: The provided example is not a qualified solution and is provided "as-is".
+
+> **⚠️ Important — all example codes are made for the SPI interface**
+>
+> SPI is the main interface for sensor configuration such as LUT programming, interface settings or measurement settings. Depending on the sensor variant, different types of interfaces are available and specific interfaces are set by default. SPI is for every variant active right at start-up.
+>
+> If the sensor requires a non-default configuration setting, the SPI interface must be kept active by sending a SPI register unlock command after t<sub>SPI_active</sub> and before t<sub>start-up</sub>. Once t<sub>start-up</sub> has elapsed the pre-configured interface is active.
+>
+> The interface type can be selected by programming `if_mode` in the `<usr_config_1_reg>` register. Please follow the sensor configuration flow as depicted in the [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf).
 
 ### 1.1. Short Description
 
@@ -367,3 +379,9 @@ Sensor1 ->ANGLE [LSB]: 0x2BDF | Sensor1 ->ANGLE [deg]: 246.775
 ```
 Oscilloscope capture:
 ![Oscilloscope_Capture](doc/TLx49012_Oscilloscope_Capture.png)
+
+## 3. Related Documents
+
+- [TLx49012 User Manual](https://www.infineon.com/assets/row/public/documents/24/44/infineon-tlx49012-usermanual-en.pdf) - Sensor user manual
+- [XENSIV™ angle sensors](https://www.infineon.com/products/sensor/magnetic-position-sensors/angle-sensors) - Infineon angle sensors product page
+- [Additional TLE49012 / TLI49012 example codes](https://github.com/Infineon/xensiv-magnetic-sensors-sw-examples/tree/main/Angle-Sensors/TLE49012-TLI49012) - More code examples for these sensors
